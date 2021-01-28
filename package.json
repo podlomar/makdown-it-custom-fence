@@ -1,0 +1,19 @@
+{
+  "name": "markdown-it-custom-fence",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/podlomar/markdown-it-custom-fence.git"
+  },
+  "author": "Martin Podloucký",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/podlomar/markdown-it-custom-fence/issues"
+  },
+  "homepage": "https://github.com/podlomar/markdown-it-custom-fence#readme"
+}
