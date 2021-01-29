@@ -44,7 +44,7 @@ module.exports = function custom_fence(md, name, options) {
     }
 
     markup = state.src.slice(start, pos);
-    params = state.src.slice(pos, max);
+    params = state.src.slice(pos, max).trim();
     if (!validate(params, markup)) { 
       return false; 
     }
@@ -114,6 +114,7 @@ module.exports = function custom_fence(md, name, options) {
     token.content = state.src.slice(state.bMarks[startLine + 1], state.eMarks[nextLine - 1]);
     token.meta = {
       fence_type: name,
+      params,
     },
     state.line = nextLine + (auto_closed ? 1 : 0);
 
