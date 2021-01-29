@@ -7,12 +7,7 @@ module.exports = function custom_fence(md, name, options) {
   }
 
   function renderDefault(tokens, idx, _options, env, slf) {
-    // add a class to the opening tag
-    if (tokens[idx].nesting === 1) {
-      tokens[idx].attrJoin('class', name);
-    }
-  
-    return slf.renderToken(tokens, idx, _options, env, slf);
+    return `<div class="${name}">\n${tokens[idx].content}\n</div>\n`;
   }
 
   options = options || {};
@@ -22,6 +17,8 @@ module.exports = function custom_fence(md, name, options) {
   const marker_close = options.marker_close || ']';
   const validate = options.validate || validateDefault;
   const render = options.render || renderDefault;
+
+  console.log('render', render);
 
   function container(state, startLine, endLine, silent) {
     var pos, nextLine, marker_count, markup, params, token,
@@ -115,6 +112,9 @@ module.exports = function custom_fence(md, name, options) {
     token.markup = markup;
     token.block = true;
     token.content = state.src.slice(state.bMarks[startLine + 1], state.eMarks[nextLine - 1]);
+    token.meta = {
+      fence_type: name,
+    },
     state.line = nextLine + (auto_closed ? 1 : 0);
 
     return true;
